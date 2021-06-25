@@ -2,6 +2,7 @@
 # Prerequisites
 *.d
 CMakeLists.txt
+Debug/*
 
 # Compiled Object files
 *.slo
