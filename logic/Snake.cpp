@@ -20,9 +20,15 @@ Coordinate Snake::get_tailpos() {
     return tail_pos;
 }
 
-void Snake::mode_head(DIRECTION direction) {
+void Snake::mode_head(DIRECTION dir) {
     Coordinate temp_pos = head_pos;
-    switch (direction) {
+
+    // if dir is REMAINS_SAME the snake just keeps moving in the same direction
+    if (dir == REMAINS_SAME) {
+        dir = this->direction;
+    }
+
+    switch (dir) {
         case UP:
             head_pos.set_x(head_pos.get_x() + move_speed);
             break;
@@ -36,6 +42,7 @@ void Snake::mode_head(DIRECTION direction) {
             head_pos.set_y(head_pos.get_y() + move_speed);
             break;
     }
+    this->direction = dir;
     head_pos.set_next(temp_pos);
     return;
 }

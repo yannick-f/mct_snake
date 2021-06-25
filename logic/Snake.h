@@ -4,7 +4,7 @@
 #include <logic/Coordinate.h>
 
 enum DIRECTION {
-    UP, DOWN, LEFT, RIGHT
+    UP, DOWN, LEFT, RIGHT, REMAINS_SAME
 };
 
 class Snake {
@@ -21,7 +21,7 @@ public:
 
     void grow();
 
-    void mode_head(DIRECTION direction);
+    void mode_head(DIRECTION dir);
 
     void move_tail();
 

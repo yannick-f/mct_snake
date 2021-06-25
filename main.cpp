@@ -16,7 +16,7 @@ DIRECTION get_dir(int x_val, int y_val, int x_offset, int y_offset) {
 			return DOWN;
 		}
 	}
-	return RIGHT;
+	return REMAINS_SAME;
 }
 
 int main(void) {
