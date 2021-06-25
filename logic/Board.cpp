@@ -1,5 +1,4 @@
-#include "Board.h"
-#include <iostream>
+#include <logic/Board.h>
 
 Board::Board() {
     snake = Snake();
@@ -64,10 +63,5 @@ int Board::get_score() {
 }
 
 void Board::draw_board() {
-    for (int i = 0; i < 32; i++) {
-        for (int j = 0; j < 32; j++) {
-            std::cout << board[i][j];
-        }
-        std::cout << "\n";
-    }
+	//TODO
 }

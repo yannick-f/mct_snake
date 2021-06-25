@@ -1,11 +1,10 @@
+#include <logic/Board.h>
 #include "msp.h"
-#include "./game/Board.h"
 
 int main(void)
 {
     Board board = Board();
     while(!board.gameover) {
-        std::cout << i;
         board.make_move(DOWN);
         board.draw_board();
     }

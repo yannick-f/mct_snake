@@ -1,9 +1,9 @@
 #ifndef MCT_SNAKE_BOARD_H
 #define MCT_SNAKE_BOARD_H
 
-#include "Coordinate.h"
-#include "Snake.h"
-#include "Food.h"
+#include <logic/Coordinate.h>
+#include <logic/Food.h>
+#include <logic/Snake.h>
 
 enum Object {
     FOOD, SNAKE

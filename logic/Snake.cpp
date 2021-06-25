@@ -1,4 +1,4 @@
-#include "Snake.h"
+#include <logic/Snake.h>
 
 Snake::Snake() {
     move_speed = 1;

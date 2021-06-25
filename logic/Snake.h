@@ -1,7 +1,7 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 
-#include <Coordinate.h>
+#include <logic/Coordinate.h>
 
 enum DIRECTION {
     UP, DOWN, LEFT, RIGHT

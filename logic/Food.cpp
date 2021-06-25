@@ -1,5 +1,5 @@
+#include <logic/Food.h>
 #include <cstdlib>
-#include "Food.h"
 
 void Food::generate_new_food() {
     pos.set_x((rand() % x_max - 3) + 1);
