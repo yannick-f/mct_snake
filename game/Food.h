@@ -1,21 +1,20 @@
 #ifndef FOOD_H
 #define FOOD_H
 
-#include <windows.h>
+#include <Coordinate.h>
 #include <cstdio>
 
-#define WIDTH 50
-#define HEIGHT 25
+class Food {
+private:
+    Coordinate pos = get_position();
+    int x_max = 32;
+    int y_max = 32;
 
-class Food
-{
-    private:
-        COORD pos;
+public:
 
-    public:
-        void gen_food();
+    void generate_new_food();
 
-        COORD get_pos();
+    Coordinate get_position();
 };
 
 #endif // FOOD_H
