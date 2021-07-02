@@ -2,14 +2,14 @@
 // Created by freischlad on 02.07.2021.
 //
 
-#include "BoardDisplay.h"
+#include "Display.h"
 #include "gpio_msp432.h"
 #include "spi_msp432.h"
 #include "st7735s_drv.h"
 #include "uGUI.h"
 #include "uGUI_colors.h"
 
-void BoardDisplay::init() {
+void Display::init() {
 	// Setup SPI interface
 	gpio_msp432_pin lcd_cs(PORT_PIN(5, 0));
 	spi_msp432 spi(EUSCI_B0_SPI, lcd_cs);

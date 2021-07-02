@@ -11,7 +11,7 @@ class BoardDisplay {
 private:
 	int val;
 public:
-	BoardDisplay();
+	Display();
 	void init();
 };
 
