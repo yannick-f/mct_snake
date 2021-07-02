@@ -1,4 +1,5 @@
-#include <logic/Board.h>
+#include "Board.h"
+
 
 Board::Board() {
     snake = Snake();

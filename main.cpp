@@ -2,6 +2,14 @@
 #include "gpio_msp432.h"
 #include "adc14_msp432.h"
 
+namespace DIFFICULTY {
+    int EASY    =   1;
+    int MEDIUM  =   2;
+    int HARD    =   3;
+    int EXTREME =   4;
+};
+
+
 DIRECTION get_dir(int x_val, int y_val, int x_offset, int y_offset) {
 	if (x_val >= y_val) {
 		if (x_val - x_offset > 200) {
@@ -37,7 +45,8 @@ int main(void) {
 		DIRECTION dir = get_dir(read_x, read_y, offset_x, offset_y);
 
 		board.make_move(dir);
-		board.draw_board();
+		//board.draw_board();
+
 	}
 	int score = board.get_score();
 
