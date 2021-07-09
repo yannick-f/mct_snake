@@ -7,12 +7,13 @@
 
 #include <cstdlib>
 
-class BoardDisplay {
-private:
-	int val;
+class Display {
 public:
-	Display();
 	void init();
+
+	void setStartDisplay();
+
+	void setPlayDisplay();
 };
 
 #endif //MCT_SNAKE_BOARDDISPLAY_H
