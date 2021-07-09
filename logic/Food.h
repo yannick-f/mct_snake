@@ -1,8 +1,7 @@
 #ifndef FOOD_H
 #define FOOD_H
 
-#include <logic/Coordinate.h>
-#include <cstdio>
+#include "Coordinate.h"
 
 class Food {
 private:

@@ -1,4 +1,4 @@
-#include <logic/Coordinate.h>
+#include "Coordinate.h"
 
 Coordinate::Coordinate(int x_pos, int y_pos) {
     this->x = x_pos;

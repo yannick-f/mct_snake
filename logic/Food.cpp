@@ -1,4 +1,4 @@
-#include <logic/Food.h>
+#include "Food.h"
 #include <cstdlib>
 
 void Food::generate_new_food() {
