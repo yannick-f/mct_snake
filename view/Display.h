@@ -6,8 +6,15 @@
 #define MCT_SNAKE_BOARDDISPLAY_H
 
 #include <cstdlib>
+#include "st7735s_drv.h"
+#include "uGUI.h"
 
 class Display {
+private:
+	st7735s_drv lcd;
+	uGUI gui;
+	static void windowstart_callback(uGUI::MESSAGE* msg);
+
 public:
 	void init();
 
