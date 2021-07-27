@@ -8,19 +8,26 @@
 #include <cstdlib>
 #include "st7735s_drv.h"
 #include "uGUI.h"
+#include <logic/enums.h>
 
 class Display {
 private:
-	st7735s_drv lcd;
-	uGUI gui;
+	int pos = 0;
+	int difficulty = 0;
 	static void windowstart_callback(uGUI::MESSAGE* msg);
 
 public:
-	void init();
+	uGUI init();
 
-	void setStartDisplay();
+	void setStartDisplay(uGUI gui);
 
 	void setPlayDisplay();
+
+	void change_pos(DIRECTION dir);
+
+	int get_pos();
+
+	int get_difficulty();
 };
 
 #endif //MCT_SNAKE_BOARDDISPLAY_H
