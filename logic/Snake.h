@@ -3,10 +3,6 @@
 
 #include <logic/Coordinate.h>
 
-enum DIRECTION {
-    UP, DOWN, LEFT, RIGHT, REMAINS_SAME
-};
-
 class Snake {
 private:
     Coordinate head_pos = Coordinate(15, 15); // start position is middle of board
