@@ -2,6 +2,7 @@
 #define SNAKE_H
 
 #include <logic/Coordinate.h>
+#include <logic/enums.h>
 
 class Snake {
 private:
