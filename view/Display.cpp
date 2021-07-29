@@ -82,15 +82,21 @@ void Display::update_playdisplay(uGUI gui, int *board) {
 
 void Display::show_score(uGUI gui, int score) {
 	gui.FillScreen(C_BLACK);
-	gui.PutString(15, 15, to_String(score), true);
+	gui.SetForecolor(C_YELLOW);
+	gui.FontSelect(&FONT_32X53);
+	gui.PutString(45, 40, to_String(score), true);
 }
 
-void Display::draw(uGUI gui, int x, int y) {
+void Display::draw(uGUI gui, int x, int y, int status) {
 	// umrechnen von 32x32 zu 128x128
 	x = x * 4;
 	y = y * 4;
 
-	gui.FillFrame(x, y, x + 4, y + 4, C_YELLOW);
+	if(status != 1) {
+		gui.FillFrame(x, y, x + 4, y + 4, C_YELLOW);
+	} else {
+		gui.FillFrame(x, y, x + 4, y + 4, C_RED);
+	}
 	return;
 }
 
