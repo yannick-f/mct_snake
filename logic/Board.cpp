@@ -63,6 +63,6 @@ int Board::get_score() {
     return score;
 }
 
-void Board::draw_board() {
-	//TODO
+Snake Board::get_snake() {
+	return snake;
 }

@@ -34,7 +34,7 @@ public:
 
     int get_score();
 
-    void draw_board();
+    Snake get_snake();
 };
 
 #endif //MCT_SNAKE_BOARD_H
