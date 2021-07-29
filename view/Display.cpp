@@ -5,10 +5,9 @@
 #include "Display.h"
 #include "gpio_msp432.h"
 #include "spi_msp432.h"
-#include "st7735s_drv.h"
-#include "uGUI.h"
 #include "uGUI_colors.h"
 #include "font_7x12.h"
+#include "logic/Coordinate.h"
 
 uGUI Display::init() {
 	// Setup SPI interface
@@ -80,10 +79,30 @@ void Display::setStartDisplay(uGUI gui) {
 
 	// show window
 	gui.WindowShow(&window);
+	return;
 }
 
-void Display::setPlayDisplay(uGUI gui) {
-	gui.FillScreen(C_BLACK);
+void Display::setPlayDisplay(uGUI gui, Snake snake) {
+	gui.FillScreen(C_YELLOW);
+
+	Coordinate coord = snake.get_headpos();
+	Coordinate end = snake.get_tailpos();
+
+	while(coord.get_next() != &end) {
+		coord = *coord.get_next();
+		draw(gui, coord);
+	}
+
+	draw(gui, end);
+	return;
+}
+
+void Display::draw(uGUI gui, Coordinate coord) {
+	uint8_t x = coord.get_x();
+	uint8_t y = coord.get_y();
+
+	gui.FillFrame(x, y, x+4, y+4, C_YELLOW);
+	return;
 }
 
 void Display::change_pos(DIRECTION dir) {
@@ -93,26 +112,26 @@ void Display::change_pos(DIRECTION dir) {
 	case UP:
 		if (pos == 0 || pos == 1 || pos == 2) {
 			pos = 3;
-		} else if (pos = 3) {
+		} else if (pos == 3) {
 			pos = 2;
 		}
 		break;
 	case DOWN:
 		if (pos == 0 || pos == 1 || pos == 2) {
 			pos = 3;
-		} else if (pos = 3) {
+		} else if (pos == 3) {
 			pos = 0;
 		}
 		break;
 	case LEFT:
-		if (pos = 0) {
+		if (pos == 0) {
 			pos = 3;
 			break;
 		}
 		pos -= 1;
 		break;
 	case RIGHT:
-		if (pos = 3) {
+		if (pos == 3) {
 			pos = 0;
 			break;
 		}

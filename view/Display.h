@@ -9,11 +9,14 @@
 #include "st7735s_drv.h"
 #include "uGUI.h"
 #include <logic/enums.h>
+#include "logic/Snake.h"
 
 class Display {
 private:
 	int pos = 0;
 	int difficulty = 0;
+	void draw(uGUI gui, Coordinate coord);
+
 	static void windowstart_callback(uGUI::MESSAGE* msg);
 
 public:
@@ -21,7 +24,7 @@ public:
 
 	void setStartDisplay(uGUI gui);
 
-	void setPlayDisplay();
+	void setPlayDisplay(uGUI gui, Snake snake);
 
 	void change_pos(DIRECTION dir);
 
