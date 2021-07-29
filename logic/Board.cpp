@@ -51,7 +51,7 @@ bool Board::collision(Coordinate coord) {
 		return true;
 	}
 	// check if snake has collided with its own body
-	if (get_status(coord) == 1) {
+	if (get_status(coord) > 1) {
 		return true;
 	}
 	return false;
