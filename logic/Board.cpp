@@ -4,11 +4,12 @@
 Board::Board() {
     snake = Snake();
     food.generate_new_food();
+    score = 0;
     gameover = false;
 }
 
 void Board::make_move(DIRECTION direction) {
-    snake.mode_head(direction);
+    snake.move_head(direction);
     if (collision(snake.get_headpos())) {
         gameover = true;
         return;

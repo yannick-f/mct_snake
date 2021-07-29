@@ -18,7 +18,7 @@ public:
 
     void grow();
 
-    void mode_head(DIRECTION dir);
+    void move_head(DIRECTION dir);
 
     void move_tail();
 

@@ -20,7 +20,7 @@ Coordinate Snake::get_tailpos() {
 	return tail_pos;
 }
 
-void Snake::mode_head(DIRECTION dir) {
+void Snake::move_head(DIRECTION dir) {
 	Coordinate temp_pos = head_pos;
 
 	// if dir is REMAINS_SAME the snake just keeps moving in the same direction
