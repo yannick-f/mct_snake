@@ -63,7 +63,7 @@ void Display::setStartDisplay(uGUI gui) {
 	return;
 }
 
-void Display::setPlayDisplay(uGUI gui, int *board) {
+void Display::update_playdisplay(uGUI gui, int *board) {
 	gui.FillScreen(C_BLACK);
 
 	int size = 32;
