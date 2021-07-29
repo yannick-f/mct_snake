@@ -8,6 +8,7 @@
 #include "uGUI.h"
 #include "spi_msp432.h"
 #include <cstdlib>
+#include "task.h"
 
 DIRECTION get_dir(int x_val, int y_val, int x_offset, int y_offset) {
 	if (x_val >= y_val) {
@@ -78,7 +79,7 @@ int main(void) {
 
 //game
 	Board board = Board();
-    display.update_playdisplay(gui, board.get_board());
+	display.update_playdisplay(gui, board.get_board());
 	while (!board.get_gamestatus()) {
 		uint16_t read_x = joy_x.adcReadRaw();
 		uint16_t read_y = joy_y.adcReadRaw();
@@ -86,7 +87,8 @@ int main(void) {
 		DIRECTION dir = get_dir(read_x, read_y, offset_x, offset_y);
 
 		board.make_move(dir);
-        display.update_playdisplay(gui, board.get_board());
+		display.update_playdisplay(gui, board.get_board());
+		task::sleep(500);
 	}
 	int score = board.get_score();
 
