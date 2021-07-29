@@ -17,24 +17,27 @@ private:
 
     bool collision(Coordinate coord);
 
-    void set_occupied(Coordinate coord, Object object);
+    void set_occupied(Coordinate coord, int object);
 
     void set_unoccupied(Coordinate coord);
 
     Snake snake;
     Food food;
     int score;
+    bool gameover;
 
 public:
     Board();
 
     void make_move(DIRECTION direction);
 
-    bool gameover;
+    bool get_gamestatus();
 
     int get_score();
 
     Snake get_snake();
+
+    int *get_board();
 };
 
 #endif //MCT_SNAKE_BOARD_H

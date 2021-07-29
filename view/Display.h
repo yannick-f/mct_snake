@@ -6,7 +6,6 @@
 #define MCT_SNAKE_BOARDDISPLAY_H
 
 #include <cstdlib>
-#include "st7735s_drv.h"
 #include "uGUI.h"
 #include <logic/enums.h>
 #include "logic/Snake.h"
@@ -15,16 +14,14 @@ class Display {
 private:
 	int pos = 0;
 	int difficulty = 0;
-	void draw(uGUI gui, Coordinate coord);
+	void draw(uGUI gui, int x, int y);
 
-	static void windowstart_callback(uGUI::MESSAGE* msg);
+	static void windowstart_callback(uGUI::MESSAGE *msg);
 
 public:
-	uGUI init();
-
 	void setStartDisplay(uGUI gui);
 
-	void setPlayDisplay(uGUI gui, Snake snake);
+	void setPlayDisplay(uGUI gui, int * board);
 
 	void change_pos(DIRECTION dir);
 

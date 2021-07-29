@@ -4,28 +4,9 @@
 
 #include "Display.h"
 #include "gpio_msp432.h"
-#include "spi_msp432.h"
 #include "uGUI_colors.h"
 #include "font_7x12.h"
 #include "logic/Coordinate.h"
-
-uGUI Display::init() {
-	// Setup SPI interface
-	gpio_msp432_pin lcd_cs(PORT_PIN(5, 0));
-	spi_msp432 spi(EUSCI_B0_SPI, lcd_cs);
-	spi.setSpeed(24000000);
-
-	// Setup LCD driver
-	gpio_msp432_pin lcd_rst(PORT_PIN(5, 7));
-	gpio_msp432_pin lcd_dc(PORT_PIN(3, 7));
-	st7735s_drv lcd(spi, lcd_rst, lcd_dc, st7735s_drv::Crystalfontz_128x128);
-
-	// Setup uGUI
-	uGUI gui(lcd);
-
-	lcd.clearScreen(0x0);
-	return gui;
-}
 
 void Display::windowstart_callback(uGUI::MESSAGE *msg) {
 	return;
@@ -82,26 +63,27 @@ void Display::setStartDisplay(uGUI gui) {
 	return;
 }
 
-void Display::setPlayDisplay(uGUI gui, Snake snake) {
-	gui.FillScreen(C_YELLOW);
+void Display::setPlayDisplay(uGUI gui, int *board) {
+	gui.FillScreen(C_BLACK);
 
-	Coordinate coord = snake.get_headpos();
-	Coordinate end = snake.get_tailpos();
-
-	while(coord.get_next() != &end) {
-		coord = *coord.get_next();
-		draw(gui, coord);
+	int size = 32;
+	for (int i = 0; i < size; ++i) {
+		for (int j = 0; j < size; ++j) {
+			int res = *(board + (i * size) + j);
+			if (res != 0) {
+				draw(gui, i, j);
+			}
+		}
 	}
-
-	draw(gui, end);
 	return;
 }
 
-void Display::draw(uGUI gui, Coordinate coord) {
-	uint8_t x = coord.get_x();
-	uint8_t y = coord.get_y();
+void Display::draw(uGUI gui, int x, int y) {
+	// umrechnen von 32x32 zu 128x128
+	x = x * 4;
+	y = y * 4;
 
-	gui.FillFrame(x, y, x+4, y+4, C_YELLOW);
+	gui.FillFrame(x, y, x + 4, y + 4, C_YELLOW);
 	return;
 }
 
@@ -140,7 +122,7 @@ void Display::change_pos(DIRECTION dir) {
 	}
 
 	// set difficulty
-	if(pos != 3) {
+	if (pos != 3) {
 		difficulty = pos;
 	}
 	return;

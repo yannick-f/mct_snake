@@ -6,6 +6,11 @@ Board::Board() {
     food.generate_new_food();
     score = 0;
     gameover = false;
+
+    // set start positions occupied
+    set_occupied(food.get_position(), 2);
+    set_occupied(snake.get_headpos(), 1);
+    set_occupied(snake.get_tailpos(), 1);
 }
 
 void Board::make_move(DIRECTION direction) {
@@ -46,12 +51,8 @@ bool Board::collision(Coordinate coord) {
     return false;
 }
 
-void Board::set_occupied(Coordinate coord, Object object) {
-    if (object == FOOD) {
-        board[coord.get_x()][coord.get_y()] = 2;
-    } else if (object == SNAKE) {
-        board[coord.get_x()][coord.get_y()] = 1;
-    }
+void Board::set_occupied(Coordinate coord, int object) {
+    board[coord.get_x()][coord.get_y()] = object;
     return;
 }
 
@@ -66,4 +67,12 @@ int Board::get_score() {
 
 Snake Board::get_snake() {
 	return snake;
+}
+
+bool Board::get_gamestatus() {
+	return gameover;
+}
+
+int* Board::get_board() {
+	return reinterpret_cast<int *>(board);
 }
