@@ -91,6 +91,7 @@ int main(void) {
 		task::sleep(500);
 	}
 	int score = board.get_score();
+	display.show_score(gui, score);
 
 	return 0;
 }
