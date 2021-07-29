@@ -4,7 +4,6 @@ Snake::Snake() {
 	move_speed = 1;
 	len = 2;
 	direction = RIGHT;
-	head_pos.set_next(tail_pos);
 }
 
 void Snake::grow() {
@@ -43,16 +42,10 @@ void Snake::move_head(DIRECTION dir) {
 		break;
 	}
 	this->direction = dir;
-	head_pos.set_next(temp_pos);
 	return;
 }
 
-void Snake::move_tail() {
-	Coordinate temp_pos = *head_pos.get_next();
-	while (temp_pos.get_next() != &tail_pos) {
-		temp_pos = *temp_pos.get_next();
-	}
-	tail_pos = temp_pos;
-	tail_pos.set_next_nullptr();
+void Snake::move_tail(Coordinate coord) {
+	tail_pos = coord;
 	return;
 }

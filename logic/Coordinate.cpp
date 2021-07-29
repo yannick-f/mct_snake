@@ -26,18 +26,6 @@ void Coordinate::set_y(int y_pos) {
     this->y = y_pos;
 }
 
-Coordinate *Coordinate::get_next() {
-    return next;
-}
-
-void Coordinate::set_next(Coordinate &coord) {
-    this->next = &coord;
-}
-
-void Coordinate::set_next_nullptr() {
-    this->next = nullptr;
-}
-
 bool Coordinate::operator==(const Coordinate &rhs) {
     if (this->x == rhs.x && this->y == rhs.y) {
         return true;

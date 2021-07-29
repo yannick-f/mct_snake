@@ -20,7 +20,7 @@ public:
 
     void move_head(DIRECTION dir);
 
-    void move_tail();
+    void move_tail(Coordinate coord);
 
     Coordinate get_headpos();
 

@@ -20,12 +20,6 @@ public:
 
     void set_y(int y_pos);
 
-    Coordinate *get_next();
-
-    void set_next(Coordinate &coord);
-
-    void set_next_nullptr();
-
     bool operator==(const Coordinate &rhs);
 };
 

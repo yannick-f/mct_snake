@@ -5,39 +5,40 @@
 #include "Food.h"
 #include "Snake.h"
 
-enum Object {
-    FOOD, SNAKE
-};
-
 class Board {
 private:
-    int board[32][32] = {0};
+	int board[32][32] = { 0 };
 
-    int get_status(Coordinate coord);
+	int get_status(Coordinate coord);
+	int get_status(int x, int y);
 
-    bool collision(Coordinate coord);
+	bool collision(Coordinate coord);
 
-    void set_occupied(Coordinate coord, int object);
+	void set_occupied(Coordinate coord, int object);
+	int counter;
 
-    void set_unoccupied(Coordinate coord);
+	void set_unoccupied(Coordinate coord);
 
-    Snake snake;
-    Food food;
-    int score;
-    bool gameover;
+	Snake snake;
+	Food food;
+
+	int score;
+	bool gameover;
 
 public:
-    Board();
+	Board();
 
-    void make_move(DIRECTION direction);
+	void make_move(DIRECTION direction);
 
-    bool get_gamestatus();
+	bool get_gamestatus();
 
-    int get_score();
+	int get_score();
 
-    Snake get_snake();
+	Snake get_snake();
 
-    int *get_board();
+	int* get_board();
+
+	Coordinate get_lowest_adjacent(Coordinate coord);
 };
 
 #endif //MCT_SNAKE_BOARD_H
