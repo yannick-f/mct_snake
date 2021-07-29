@@ -30,16 +30,16 @@ void Snake::move_head(DIRECTION dir) {
 
 	switch (dir) {
 	case UP:
-		head_pos.set_x(head_pos.get_x() + move_speed);
+		head_pos.set_y(head_pos.get_y() + move_speed);
 		break;
 	case DOWN:
-		head_pos.set_x(head_pos.get_x() - move_speed);
-		break;
-	case LEFT:
 		head_pos.set_y(head_pos.get_y() - move_speed);
 		break;
+	case LEFT:
+		head_pos.set_x(head_pos.get_x() - move_speed);
+		break;
 	case RIGHT:
-		head_pos.set_y(head_pos.get_y() + move_speed);
+		head_pos.set_x(head_pos.get_x() + move_speed);
 		break;
 	}
 	this->direction = dir;
