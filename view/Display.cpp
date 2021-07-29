@@ -6,7 +6,9 @@
 #include "gpio_msp432.h"
 #include "uGUI_colors.h"
 #include "font_7x12.h"
+#include "font_32x53.h"
 #include "logic/Coordinate.h"
+#include "yahal_String.h"
 
 void Display::windowstart_callback(uGUI::MESSAGE *msg) {
 	return;
@@ -76,6 +78,11 @@ void Display::update_playdisplay(uGUI gui, int *board) {
 		}
 	}
 	return;
+}
+
+void Display::show_score(uGUI gui, int score) {
+	gui.FillScreen(C_BLACK);
+	gui.PutString(15, 15, to_String(score), true);
 }
 
 void Display::draw(uGUI gui, int x, int y) {

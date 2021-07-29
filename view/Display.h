@@ -21,7 +21,9 @@ private:
 public:
 	void setStartDisplay(uGUI gui);
 
-	void update_playdisplay(uGUI gui, int * board);
+	void update_playdisplay(uGUI gui, int *board);
+
+	void show_score(uGUI gui, int score);
 
 	void change_pos(DIRECTION dir);
 
