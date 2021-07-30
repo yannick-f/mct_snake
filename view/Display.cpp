@@ -9,6 +9,7 @@
 #include "font_32x53.h"
 #include "logic/Coordinate.h"
 #include "yahal_String.h"
+#include "task.h"
 
 void Display::windowstart_callback(uGUI::MESSAGE *msg) {
 	return;
@@ -85,6 +86,8 @@ void Display::show_score(uGUI gui, int score) {
 	gui.SetForecolor(C_YELLOW);
 	gui.FontSelect(&FONT_32X53);
 	gui.PutString(45, 40, to_String(score), true);
+
+	task::sleep(5000);
 }
 
 void Display::draw(uGUI gui, int x, int y, int status) {
