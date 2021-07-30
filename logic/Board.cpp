@@ -26,7 +26,7 @@ void Board::make_move(DIRECTION direction) {
 		set_occupied(food.get_position(), 1);
 	} else {
 		int val = get_status(snake.get_tailpos());
-		set_unoccupied(snake.get_tailpos());
+		set_occupied(snake.get_tailpos(), -1);
 		snake.move_tail(get_lowest_adjacent(this->snake.get_tailpos(), val));
 	}
 

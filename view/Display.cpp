@@ -12,6 +12,10 @@
 #include "yahal_String.h"
 #include "task.h"
 
+void Display::clear(uGUI gui) {
+	gui.FillScreen(C_BLACK);
+}
+
 void Display::setStartDisplay(uGUI gui) {
 	// blackscreen
 	gui.FillScreen(C_BLACK);
@@ -36,9 +40,6 @@ void Display::setStartDisplay(uGUI gui) {
 }
 
 void Display::update_playdisplay(uGUI gui, int *board) {
-	// blackscreen
-	gui.FillScreen(C_BLACK);
-
 	int size = 32;
 	for (int i = 0; i < size; ++i) {
 		for (int j = 0; j < size; ++j) {
@@ -46,6 +47,9 @@ void Display::update_playdisplay(uGUI gui, int *board) {
 			// if occupied -> draw
 			if (res != 0) {
 				draw(gui, i, j, res);
+				if (res == -1) {
+					*(board + (i * size) + j) = 0;
+				}
 			}
 		}
 	}
@@ -76,8 +80,10 @@ void Display::draw(uGUI gui, int x, int y, int status) {
 	x = x * 4;
 	y = y * 4;
 
-	if (status == 1) {
-		gui.FillFrame(x, y, x + 4, y + 4, C_RED);
+	if (status == -1) {
+		gui.FillFrame(x, y, x + 4, y + 4, C_BLACK);
+	} else if (status == 1) {
+		gui.FillCircle(x + 2, y + 2, 2, C_RED);
 	} else {
 		gui.FillFrame(x, y, x + 4, y + 4, C_YELLOW);
 	}

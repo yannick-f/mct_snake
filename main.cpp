@@ -38,6 +38,8 @@ void run_game(Display display, uGUI gui) {
 	uint16_t offset_x = joy_x.adcReadRaw();
 	uint16_t offset_y = joy_y.adcReadRaw();
 
+	display.clear(gui);
+
 	Board board = Board();
 	display.update_playdisplay(gui, board.get_board());
 
@@ -49,7 +51,7 @@ void run_game(Display display, uGUI gui) {
 
 		board.make_move(dir);
 		display.update_playdisplay(gui, board.get_board());
-		task::sleep(500);
+		task::sleep(100);
 	}
 	int score = board.get_score();
 	display.show_score(gui, score);
