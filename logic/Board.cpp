@@ -26,8 +26,9 @@ void Board::make_move(DIRECTION direction) {
 		food.generate_new_food();
 		set_occupied(food.get_position(), 1);
 	} else {
+		int val = get_status(snake.get_tailpos());
 		set_unoccupied(snake.get_tailpos());
-		snake.move_tail(get_lowest_adjacent(this->snake.get_tailpos()));
+		snake.move_tail(get_lowest_adjacent(this->snake.get_tailpos(), val));
 	}
 
 	set_occupied(snake.get_headpos(), counter);
@@ -83,21 +84,20 @@ int* Board::get_board() {
 	return reinterpret_cast<int*>(board);
 }
 
-Coordinate Board::get_lowest_adjacent(Coordinate coord) {
-	int score = get_status(coord);
+Coordinate Board::get_lowest_adjacent(Coordinate coord, int val) {
 	int score_w = get_status(coord.get_x() - 1, coord.get_y());
 	int score_n = get_status(coord.get_x(), coord.get_y() + 1);
 	int score_e = get_status(coord.get_x() + 1, coord.get_y());
 	int score_s = get_status(coord.get_x(), coord.get_y() - 1);
 	Coordinate res = coord;
 
-	if (score_w == score + 1) {
+	if (score_w == val + 1) {
 		res = { coord.get_x() - 1, coord.get_y() };
-	} else if (score_n == score + 1) {
+	} else if (score_n == val + 1) {
 		res = { coord.get_x(), coord.get_y() + 1 };
-	} else if (score_e == score + 1) {
+	} else if (score_e == val + 1) {
 		res = { coord.get_x() + 1, coord.get_y() };
-	} else if (score_s == score + 1) {
+	} else if (score_s == val + 1) {
 		res = { coord.get_x(), coord.get_y() - 1 };
 	}
 	return res;

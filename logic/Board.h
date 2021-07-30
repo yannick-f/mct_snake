@@ -9,6 +9,12 @@ class Board {
 private:
 	int board[32][32] = { 0 };
 
+	Snake snake;
+	Food food;
+
+	int score;
+	bool gameover;
+
 	int get_status(Coordinate coord);
 	int get_status(int x, int y);
 
@@ -19,11 +25,8 @@ private:
 
 	void set_unoccupied(Coordinate coord);
 
-	Snake snake;
-	Food food;
+	Coordinate get_lowest_adjacent(Coordinate coord, int val);
 
-	int score;
-	bool gameover;
 
 public:
 	Board();
@@ -37,8 +40,6 @@ public:
 	Snake get_snake();
 
 	int* get_board();
-
-	Coordinate get_lowest_adjacent(Coordinate coord);
 };
 
 #endif //MCT_SNAKE_BOARD_H
