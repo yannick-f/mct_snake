@@ -27,7 +27,6 @@ private:
 
 	Coordinate get_lowest_adjacent(Coordinate coord, int val);
 
-
 public:
 	Board();
 
@@ -36,8 +35,6 @@ public:
 	bool get_gamestatus();
 
 	int get_score();
-
-	Snake get_snake();
 
 	int* get_board();
 };

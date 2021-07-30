@@ -3,24 +3,24 @@
 
 class Coordinate {
 private:
-    int x;
-    int y;
-    Coordinate *next;
+	int x;
+	int y;
+	Coordinate *next;
 
 public:
-    Coordinate(int x_pos, int y_pos);
+	Coordinate(int x_pos, int y_pos);
 
-    Coordinate(const Coordinate &coord);
+	Coordinate(const Coordinate &coord);
 
-    int get_x();
+	int get_x();
 
-    int get_y();
+	int get_y();
 
-    void set_x(int x_pos);
+	void set_x(int x_pos);
 
-    void set_y(int y_pos);
+	void set_y(int y_pos);
 
-    bool operator==(const Coordinate &rhs);
+	bool operator==(const Coordinate &rhs);
 };
 
 #endif //MCT_SNAKE_COORDINATE_H

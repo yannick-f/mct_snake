@@ -15,6 +15,8 @@ private:
 	void draw(uGUI gui, int x, int y, int status);
 
 public:
+	void clear(uGUI gui);
+
 	void setStartDisplay(uGUI gui);
 
 	void update_playdisplay(uGUI gui, int *board);
