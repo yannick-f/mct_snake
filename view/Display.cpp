@@ -7,6 +7,8 @@
 #include "uGUI_colors.h"
 #include "font_7x12.h"
 #include "font_8x8.h"
+#include "font_12x20.h"
+#include "font_22x36.h"
 #include "font_32x53.h"
 #include "logic/Coordinate.h"
 #include "yahal_String.h"
@@ -20,50 +22,21 @@ void Display::setStartDisplay(uGUI gui) {
 	// blackscreen
 	gui.FillScreen(C_BLACK);
 
-	uGUI::WINDOW window;
-	uGUI::BUTTON buttonEasy;
-	uGUI::BUTTON buttonMedium;
-	uGUI::BUTTON buttonHard;
-	uGUI::BUTTON buttonStart;
-	uGUI::TEXTBOX textbox;
-	uGUI::OBJECT obj_buff_wnd_1[10];
+	UG_COLOR color = C_ORANGE_RED;
 
-	// ids
-	uint8_t button_easy_id = 0x0000;
-	uint8_t button_medium_id = 0x0001;
-	uint8_t button_hard_id = 0x0002;
-	uint8_t button_start_id = 0x0003;
-	uint8_t textbox_id = 0x0004;
+	gui.SetForecolor(color);
+	gui.FontSelect(&FONT_22X36);
+	gui.PutString(8, 0, "SNAKE", true);
 
-	// setup window
-	gui.WindowCreate(&window, obj_buff_wnd_1, 10, windowstart_callback);
-	gui.WindowSetTitleText(&window, "Snake - MCT Version");
-	gui.WindowSetTitleTextFont(&window, &FONT_7X12);
+	gui.SetForecolor(color);
+	gui.FontSelect(&FONT_8X8);
+	gui.PutString(10, 50, "Press Button", true);
+	gui.PutString(30, 60, "to Start", true);
 
-	// setup button
-	gui.ButtonCreate(&window, &buttonEasy, button_easy_id, 5, 20, 15, 40);
-	gui.ButtonCreate(&window, &buttonMedium, button_medium_id, 50, 20, 60, 40);
-	gui.ButtonCreate(&window, &buttonHard, button_hard_id, 95, 20, 105, 40);
-	gui.ButtonCreate(&window, &buttonStart, button_start_id, 40, 80, 80, 100);
-
-	gui.ButtonSetFont(&window, button_easy_id, &FONT_7X12);
-	gui.ButtonSetFont(&window, button_medium_id, &FONT_7X12);
-	gui.ButtonSetFont(&window, button_hard_id, &FONT_7X12);
-	gui.ButtonSetFont(&window, button_start_id, &FONT_7X12);
-
-	gui.ButtonSetText(&window, button_easy_id, "Easy");
-	gui.ButtonSetText(&window, button_medium_id, "Medium");
-	gui.ButtonSetText(&window, button_hard_id, "Hard");
-	gui.ButtonSetText(&window, button_start_id, "Start Game");
-
-	// setup textbox
-	gui.TextboxCreate(&window, &textbox, textbox_id, 10, 100, 100, 120);
-	gui.TextboxSetFont(&window, textbox_id, &FONT_7X12);
-	char *msg = "This is an example text";
-	gui.TextboxSetText(&window, textbox_id, msg);
-
-	// show window
-	gui.WindowShow(&window);
+	gui.DrawCircle(64, 100, 20, color);
+	gui.SetForecolor(color);
+	gui.FontSelect(&FONT_22X36);
+	gui.PutString(53, 82, "A", true);
 	return;
 }
 
