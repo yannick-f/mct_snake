@@ -11,7 +11,6 @@ private:
 
     DIRECTION direction;
     int move_speed;
-    int len;
 
 public:
     Snake();

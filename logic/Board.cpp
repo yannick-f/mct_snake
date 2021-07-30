@@ -21,7 +21,6 @@ void Board::make_move(DIRECTION direction) {
 		gameover = true;
 		return;
 	} else if (snake.get_headpos() == food.get_position()) {
-		snake.grow();
 		score++;
 		food.generate_new_food();
 		set_occupied(food.get_position(), 1);
@@ -37,14 +36,29 @@ void Board::make_move(DIRECTION direction) {
 	return;
 }
 
+/**
+ * get the status of a Coordinate on the board
+ * -> 0 unoccupied
+ * -> 1 Food
+ * -> 2-n Snake-body
+ */
 int Board::get_status(Coordinate coord) {
 	return board[coord.get_x()][coord.get_y()];
 }
 
+/**
+ * get the status of a Coordinate on the board
+ * -> 0 unoccupied
+ * -> 1 Food
+ * -> 2-n Snake-body
+ */
 int Board::get_status(int x, int y) {
 	return board[x][y];
 }
 
+/**
+ * detects if there is a collision on the given coordinate or if it is out of bounds
+ */
 bool Board::collision(Coordinate coord) {
 	// // check if snake is outside of bounds
 	if (coord.get_x() <= 0 || coord.get_y() <= 0 || coord.get_x() >= 32
@@ -58,32 +72,50 @@ bool Board::collision(Coordinate coord) {
 	return false;
 }
 
+/**
+ * sets a coordinate on the board as occupied
+ * -> object give the value to set (1 for Food, 2-n for Snake)
+ */
 void Board::set_occupied(Coordinate coord, int object) {
 	board[coord.get_x()][coord.get_y()] = object;
 	return;
 }
 
+/**
+ * sets a coordinate on the board back to 0/unoccupied
+ */
 void Board::set_unoccupied(Coordinate coord) {
 	board[coord.get_x()][coord.get_y()] = 0;
 	return;
 }
 
+/**
+ * give back the score
+ */
 int Board::get_score() {
 	return score;
 }
 
-Snake Board::get_snake() {
-	return snake;
-}
-
+/**
+ * give back the gamestatus:
+ * -> true for gameover
+ * -> false for still running
+ */
 bool Board::get_gamestatus() {
 	return gameover;
 }
 
+/**
+ * gives back a pointer to the board
+ */
 int* Board::get_board() {
 	return reinterpret_cast<int*>(board);
 }
 
+/**
+ * gives the coordinate of the lowest adjacent Coordinate (excl. 0 & 1)
+ * is used to find the next tail of the snake
+ */
 Coordinate Board::get_lowest_adjacent(Coordinate coord, int val) {
 	int score_w = get_status(coord.get_x() - 1, coord.get_y());
 	int score_n = get_status(coord.get_x(), coord.get_y() + 1);

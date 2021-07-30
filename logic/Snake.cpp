@@ -2,13 +2,7 @@
 
 Snake::Snake() {
 	move_speed = 1;
-	len = 2;
 	direction = RIGHT;
-}
-
-void Snake::grow() {
-	len++;
-	return;
 }
 
 Coordinate Snake::get_headpos() {
@@ -19,9 +13,10 @@ Coordinate Snake::get_tailpos() {
 	return tail_pos;
 }
 
+/**
+ * moves the head in the given direction
+ */
 void Snake::move_head(DIRECTION dir) {
-	Coordinate temp_pos = head_pos;
-
 	// if dir is REMAINS_SAME the snake just keeps moving in the same direction
 	if (dir == REMAINS_SAME) {
 		dir = this->direction;
@@ -45,6 +40,9 @@ void Snake::move_head(DIRECTION dir) {
 	return;
 }
 
+/**
+ * moves the tail to the given Coordinate
+ */
 void Snake::move_tail(Coordinate coord) {
 	tail_pos = coord;
 	return;
