@@ -11,17 +11,17 @@
 #include "task.h"
 
 DIRECTION get_dir(int x_val, int y_val, int x_offset, int y_offset) {
-	if (x_val >= y_val) {
+	if (abs(x_val - x_offset) >= abs(y_val - y_offset)) {
 		if (x_val - x_offset > 200) {
 			return RIGHT;
 		} else if (x_val - x_offset < -200) {
 			return LEFT;
 		}
-	} else if (x_val < y_val) {
+	} else {
 		if (y_val - y_offset > 200) {
-			return UP;
-		} else if (y_val - y_offset < -200) {
 			return DOWN;
+		} else if (y_val - y_offset < -200) {
+			return UP;
 		}
 	}
 	return REMAINS_SAME;
