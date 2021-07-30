@@ -1,6 +1,8 @@
 ### C++ ###
 # Prerequisites
 *.d
+CMakeLists.txt
+Debug/*
 
 # Compiled Object files
 *.slo
@@ -48,6 +50,7 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/*
 
 # Generated files
 .idea/**/contentModel.xml
