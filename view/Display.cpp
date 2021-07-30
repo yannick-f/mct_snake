@@ -73,7 +73,7 @@ void Display::update_playdisplay(uGUI gui, int *board) {
 		for (int j = 0; j < size; ++j) {
 			int res = *(board + (i * size) + j);
 			if (res != 0) {
-				draw(gui, i, j);
+				draw(gui, i, j, res);
 			}
 		}
 	}

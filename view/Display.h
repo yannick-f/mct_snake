@@ -14,7 +14,7 @@ class Display {
 private:
 	int pos = 0;
 	int difficulty = 0;
-	void draw(uGUI gui, int x, int y);
+	void draw(uGUI gui, int x, int y, int status);
 
 	static void windowstart_callback(uGUI::MESSAGE *msg);
 
