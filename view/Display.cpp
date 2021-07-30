@@ -6,6 +6,7 @@
 #include "gpio_msp432.h"
 #include "uGUI_colors.h"
 #include "font_7x12.h"
+#include "font_8x8.h"
 #include "font_32x53.h"
 #include "logic/Coordinate.h"
 #include "yahal_String.h"
@@ -83,9 +84,19 @@ void Display::update_playdisplay(uGUI gui, int *board) {
 
 void Display::show_score(uGUI gui, int score) {
 	gui.FillScreen(C_BLACK);
+
+	gui.SetForecolor(C_YELLOW);
+	gui.FontSelect(&FONT_8X8);
+	gui.PutString(5, 15, "Your Score is", true);
+
 	gui.SetForecolor(C_YELLOW);
 	gui.FontSelect(&FONT_32X53);
 	gui.PutString(45, 40, to_String(score), true);
+
+	gui.SetForecolor(C_YELLOW);
+	gui.FontSelect(&FONT_8X8);
+	gui.PutString(5, 100, "Press  Button", true);
+	gui.PutString(5, 110, "To Play Again", true);
 
 	task::sleep(5000);
 }
@@ -95,7 +106,7 @@ void Display::draw(uGUI gui, int x, int y, int status) {
 	x = x * 4;
 	y = y * 4;
 
-	if(status != 1) {
+	if (status != 1) {
 		gui.FillFrame(x, y, x + 4, y + 4, C_YELLOW);
 	} else {
 		gui.FillFrame(x, y, x + 4, y + 4, C_RED);
