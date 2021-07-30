@@ -14,10 +14,6 @@
 #include "yahal_String.h"
 #include "task.h"
 
-void Display::windowstart_callback(uGUI::MESSAGE *msg) {
-	return;
-}
-
 void Display::setStartDisplay(uGUI gui) {
 	// blackscreen
 	gui.FillScreen(C_BLACK);
@@ -85,53 +81,4 @@ void Display::draw(uGUI gui, int x, int y, int status) {
 		gui.FillFrame(x, y, x + 4, y + 4, C_RED);
 	}
 	return;
-}
-
-void Display::change_pos(DIRECTION dir) {
-	switch (dir) {
-	case REMAINS_SAME:
-		return;
-	case UP:
-		if (pos == 0 || pos == 1 || pos == 2) {
-			pos = 3;
-		} else if (pos == 3) {
-			pos = 2;
-		}
-		break;
-	case DOWN:
-		if (pos == 0 || pos == 1 || pos == 2) {
-			pos = 3;
-		} else if (pos == 3) {
-			pos = 0;
-		}
-		break;
-	case LEFT:
-		if (pos == 0) {
-			pos = 3;
-			break;
-		}
-		pos -= 1;
-		break;
-	case RIGHT:
-		if (pos == 3) {
-			pos = 0;
-			break;
-		}
-		pos += 1;
-		break;
-	}
-
-	// set difficulty
-	if (pos != 3) {
-		difficulty = pos;
-	}
-	return;
-}
-
-int Display::get_pos() {
-	return pos;
-}
-
-int Display::get_difficulty() {
-	return difficulty;
 }

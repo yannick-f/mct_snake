@@ -12,11 +12,7 @@
 
 class Display {
 private:
-	int pos = 0;
-	int difficulty = 0;
 	void draw(uGUI gui, int x, int y, int status);
-
-	static void windowstart_callback(uGUI::MESSAGE *msg);
 
 public:
 	void setStartDisplay(uGUI gui);
@@ -24,12 +20,6 @@ public:
 	void update_playdisplay(uGUI gui, int *board);
 
 	void show_score(uGUI gui, int score);
-
-	void change_pos(DIRECTION dir);
-
-	int get_pos();
-
-	int get_difficulty();
 };
 
 #endif //MCT_SNAKE_BOARDDISPLAY_H
